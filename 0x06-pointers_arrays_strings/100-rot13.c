@@ -1,29 +1,34 @@
-#include "holberton.h"
-#include <stdio.h>
-
+#include "main.h"
 /**
- * main - check the code for Holberton School students.
+ *rot13 - encodes strings using rot13.
+ *@s: pointer to string.
  *
- * Return: Always 0.
+ *Return: pointer to encoded string.
  */
-int main(void)
+char *rot13(char *s)
 {
-    char s[] = "ROT13 (\"rotate by 13 places\", sometimes hyphenated ROT-13) is a simple letter substitution cipher.\n";
-    char *p;
+	int stringCount, rotation;
+	char r1[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+		     'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
+		     'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+		     'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
+		     'Z'};
+	char r2[] = {'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
+		     'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+		     'm', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y',
+		     'Z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+		     'M'};
 
-    p = rot13(s);
-    printf("%s", p);
-    printf("------------------------------------\n");
-    printf("%s", s);
-    printf("------------------------------------\n");
-    p = rot13(s);
-    printf("%s", p);
-    printf("------------------------------------\n");
-    printf("%s", s);
-    printf("------------------------------------\n");
-    p = rot13(s);
-    printf("%s", p);
-    printf("------------------------------------\n");
-    printf("%s", s);
-    return (0);
+	for (stringCount = 0; s[stringCount] != '\0'; stringCount++)
+	{
+		for (rotation = 0; rotation < 53; rotation++)
+		{
+			if (r1[rotation] == s[stringCount])
+			{
+				s[stringCount] = r2[rotation];
+				break;
+			}
+		}
+	}
+	return (s);
 }
