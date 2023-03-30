@@ -1,18 +1,23 @@
-#include "holberton.h"
-#include <stdio.h>
-
+#include "main.h"
 /**
- * main - check the code for Holberton School students.
+ *_strcmp - compares two strings.
+ *@s1: pointer to first string.
+ *@s2: pointer to second string.
  *
- * Return: Always 0.
+ *Return: value less than 0 if string is less than the other.
+ *value greater than 0 if string is greater than the other.
+ *0 if strings are equal.
  */
-int main(void)
+int _strcmp(char *s1, char *s2)
 {
-    char s1[] = "Hello";
-    char s2[] = "World!";
+	int counter, cmpVal;
 
-    printf("%d\n", _strcmp(s1, s2));
-    printf("%d\n", _strcmp(s2, s1));
-    printf("%d\n", _strcmp(s1, s1));
-    return (0);
+	counter = 0;
+	while (s1[counter] == s2[counter] && s1[counter] != '\0')
+	{
+		counter++;
+	}
+
+	cmpVal = s1[counter] - s2[counter];
+	return (cmpVal);
 }
