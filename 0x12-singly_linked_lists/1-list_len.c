@@ -1,31 +1,21 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
-* list_len - Return number of elements
-*
-* @h: Points to struct
-*
-* Return: Num of elements
-*/
+ * list_len - prints list length
+ *
+ * @h: list header
+ * Return: 0
+ */
 
 size_t list_len(const list_t *h)
 {
-	unsigned int index = 0;
-	const list_t *list;
+	const list_t *p = h;
+	int i = 0;
 
-	list = malloc(sizeof(list_t));
-
-	list = h;
-
-	if (list == NULL)
+	for (; p != NULL; p = p->next)
 	{
-		return (0);
+		i++;
 	}
-	while (list != NULL)
-	{
-		list = list->next;
-		index++;
-	}
-	return (index);
+
+	return (i);
 }

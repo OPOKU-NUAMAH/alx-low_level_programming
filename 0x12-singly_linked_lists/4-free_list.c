@@ -1,20 +1,22 @@
 #include "lists.h"
 
 /**
-* free_list - 2function description
-*
-* @head: Head of node
-*
-*
-* Return: void
-*/
+ * free_list - adds node at end of list
+ *
+ * @head: list header
+ * Return: 0
+ */
 
 void free_list(list_t *head)
 {
-	while (head)
+	list_t *p_elem, *elem;
+
+	elem = head;
+	while (elem)
 	{
-		free(head->str);
-		free(head);
-		head = head->next;
+		p_elem = elem;
+		elem = elem->next;
+		free(p_elem->str);
+		free(p_elem);
 	}
 }
