@@ -1,20 +1,23 @@
-#include "main.h"
+#include <stdio.h>
+
 /**
-* print_number - Prints a number
-* @n: The number to print
-*
-*/
-void print_number(int n)
+ * main - Prints the sum of all multiples of 3 or 5 up to 102
+ * Return: Always (Success)
+ */
+int main(void)
 {
-unsigned int num = n;
-if (n < 0)
-{
-_putchar('-');
-num = -num;
-}
-if (num > 9)
-{
-print_number(num / 10);
-}
-_putchar(num % 10 + '0');
+	int i, z = 0;
+
+	while (i < 1024)
+	{
+		if ((i % 3 == 0) || (i % 5 == 0))
+		{
+			z += i;
+		}
+
+		i++;
+	}
+
+	printf("%d\n", z);
+	return (0);
 }
